@@ -1,6 +1,8 @@
 # firebase-down
 
-[![Travis](https://secure.travis-ci.org/digidem/firebase-down.png)](http://travis-ci.org/digidem/firebase-down) [![npm](https://img.shields.io/npm/v/firebase-down.svg)](https://www.npmjs.com/package/firebase-down) [![npm](https://img.shields.io/npm/dm/firebase-down.svg)](https://www.npmjs.com/package/firebase-down)
+[![Travis](https://secure.travis-ci.org/digidem/firebase-down.svg)](http://travis-ci.org/digidem/firebase-down)
+[![npm](https://img.shields.io/npm/v/firebase-down.svg)](https://www.npmjs.com/package/firebase-down)
+[![npm](https://img.shields.io/npm/dm/firebase-down.svg)](https://www.npmjs.com/package/firebase-down)
 
 > LevelDOWN adapter for Firebase realtime database
 
