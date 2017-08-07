@@ -1,4 +1,4 @@
-var test = require('tape')
+var test = require('tap').test
 var testCommon = require('./testCommon')
 var firebase = require('firebase')
 

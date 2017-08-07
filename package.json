@@ -4,7 +4,7 @@
   "description": "LevelDOWN adapter for Firebase realtime database",
   "main": "index.js",
   "scripts": {
-    "test": "tape test/test.js"
+    "test": "tap test/test.js --coverage"
   },
   "keywords": [
     "leveldown",
@@ -22,7 +22,7 @@
     "dotenv": "^4.0.0",
     "firebase": "^4.2.0",
     "randombytes": "^2.0.5",
-    "tape": "^4.8.0"
+    "tap": "^10.7.1"
   },
   "directories": {
     "test": "test"

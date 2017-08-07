@@ -1,6 +1,7 @@
 # firebase-down
 
 [![Travis](https://secure.travis-ci.org/digidem/firebase-down.svg)](http://travis-ci.org/digidem/firebase-down)
+[![Coverage Status](https://coveralls.io/repos/github/digidem/firebase-down/badge.svg?branch=master)](https://coveralls.io/github/digidem/firebase-down?branch=master)
 [![npm](https://img.shields.io/npm/v/firebase-down.svg)](https://www.npmjs.com/package/firebase-down)
 [![npm](https://img.shields.io/npm/dm/firebase-down.svg)](https://www.npmjs.com/package/firebase-down)
 
