@@ -1,0 +1,36 @@
+{
+  "name": "firebase-down",
+  "version": "1.0.0",
+  "description": "LevelDOWN adapter for Firebase realtime database",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/test.js"
+  },
+  "keywords": [
+    "leveldown",
+    "firebase"
+  ],
+  "author": "Gregor MacLennan",
+  "license": "MIT",
+  "dependencies": {
+    "abstract-leveldown": "^2.6.2",
+    "d64": "^1.0.0",
+    "ltgt": "^2.2.0"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "firebase": "^4.2.0",
+    "tape": "^4.8.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digidem/firebase-down.git"
+  },
+  "bugs": {
+    "url": "https://github.com/digidem/firebase-down/issues"
+  },
+  "homepage": "https://github.com/digidem/firebase-down#readme"
+}
