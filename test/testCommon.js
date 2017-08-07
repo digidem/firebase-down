@@ -1,20 +1,26 @@
 var firebase = require('firebase')
+var randomBytes = require('randombytes')
+
+var fb64 = require('../fb64')
 
 var dbidx = 0
+// Avoid clashes when tests are running simultaneously against
+// the same Firebase instance
+var dbPrefix = fb64.encode(randomBytes(8)) + '_firebase_down_test_db_'
 
 var location = function () {
-  return '_leveldown_test_db_' + dbidx++
+  return dbPrefix + dbidx++
 }
 
 var lastLocation = function () {
-  return '_leveldown_test_db_' + dbidx
+  return dbPrefix + dbidx
 }
 
 var cleanup = function (callback) {
   var app = firebase.app()
   var updates = {}
   for (var i = 0; i <= dbidx; i++) {
-    updates['_leveldown_test_db_' + i] = null
+    updates[dbPrefix + i] = null
   }
   app.database().ref().update(updates, callback)
 }
