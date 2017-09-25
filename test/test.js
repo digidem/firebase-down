@@ -52,6 +52,8 @@ testIterator.tearDown(test, testCommon)
 
 require('abstract-leveldown/abstract/ranges-test').all(leveldown, test, testCommon)
 
+require('./assertions')(firebaseApp, test)
+
 test('delete firebase app instance', function (t) {
   t.plan(1)
   firebaseApp.delete()

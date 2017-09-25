@@ -1,5 +1,6 @@
 var inherits = require('inherits')
 var assert = require('assert')
+var firebase = require('firebase')
 var AbstractLevelDOWN = require('abstract-leveldown').AbstractLevelDOWN
 
 var Iterator = require('./iterator')
@@ -13,9 +14,18 @@ module.exports = FirebaseDOWN
 
 function FirebaseDOWN (firebaseApp, location) {
   if (!(this instanceof FirebaseDOWN)) return new FirebaseDOWN(firebaseApp, location)
-  AbstractLevelDOWN.call(this, location)
-  this.ref = firebaseApp.database().ref(location || 'FirebaseDOWN')
+  location = location || 'FirebaseDOWN'
+  assert(firebaseApp instanceof firebase.app.App, 'must pass an instance of firebase.app.App https://firebase.google.com/docs/reference/js/firebase.app.App')
   assert(typeof location !== 'string' || fb64.isValidLocation(location), 'location has invalid characters. Must be one `/-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz`')
+  if (location instanceof firebase.database.Reference) {
+    AbstractLevelDOWN.call(this, location.toString())
+    this.ref = location
+  } else if (typeof location === 'string') {
+    AbstractLevelDOWN.call(this, location)
+    this.ref = firebaseApp.database().ref(location)
+  } else {
+    throw new Error('location must be a string or a firebase.database.Reference https://firebase.google.com/docs/reference/js/firebase.database.Reference')
+  }
 }
 
 inherits(FirebaseDOWN, AbstractLevelDOWN)
