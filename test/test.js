@@ -25,7 +25,7 @@ function leveldown (location) {
   return new FirebaseDOWN(firebaseApp, location)
 }
 
-var testBuffer = new Buffer('foo')
+var testBuffer = Buffer.from('foo')
 
 /** * compatibility with basic LevelDOWN API ***/
 
