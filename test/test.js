@@ -4,6 +4,8 @@ var firebase = require('firebase')
 
 require('dotenv').load()
 
+require('./fb64.test')
+
 var FirebaseDOWN = require('../')
 
 var config = {

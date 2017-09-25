@@ -1,4 +1,5 @@
 var inherits = require('inherits')
+var assert = require('assert')
 var AbstractLevelDOWN = require('abstract-leveldown').AbstractLevelDOWN
 
 var Iterator = require('./iterator')
@@ -14,6 +15,7 @@ function FirebaseDOWN (firebaseApp, location) {
   if (!(this instanceof FirebaseDOWN)) return new FirebaseDOWN(firebaseApp, location)
   AbstractLevelDOWN.call(this, location)
   this.ref = firebaseApp.database().ref(location || 'FirebaseDOWN')
+  assert(typeof location !== 'string' || fb64.isValidLocation(location), 'location has invalid characters. Must be one `/-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz`')
 }
 
 inherits(FirebaseDOWN, AbstractLevelDOWN)
