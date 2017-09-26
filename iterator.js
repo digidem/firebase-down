@@ -73,8 +73,9 @@ Iterator.prototype.onChild = function (snapshot) {
     value = Buffer.from(value)
   }
   if (this.callback && !this.options.reverse) {
-    this.callback(null, key, value)
+    const callback = this.callback
     this.callback = null
+    callback(null, key, value)
   } else {
     this._buffer.push({key: key, value: value})
   }
