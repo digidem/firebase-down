@@ -9,22 +9,19 @@ function toFirebaseKey (key, encoding) {
   return fb64.encode(Buffer.from(key, encoding))
 }
 
-module.exports = FirebaseDOWN
+module.exports = function (firebaseApp) {
+  assert(firebaseApp && typeof firebaseApp.database === 'function', 'must pass an instance of firebase.app.App https://firebase.google.com/docs/reference/js/firebase.app.App')
+  return function (location) {
+    return new FirebaseDOWN(firebaseApp, location)
+  }
+}
 
 function FirebaseDOWN (firebaseApp, location) {
-  if (!(this instanceof FirebaseDOWN)) return new FirebaseDOWN(firebaseApp, location)
   location = location || 'FirebaseDOWN'
-  assert(firebaseApp && typeof firebaseApp.database === 'function', 'must pass an instance of firebase.app.App https://firebase.google.com/docs/reference/js/firebase.app.App')
-  assert(typeof location !== 'string' || fb64.isValidLocation(location), 'location has invalid characters. Must be one `/-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz`')
-  if (typeof location === 'object' && location.key && location.ref) {
-    AbstractLevelDOWN.call(this, location.toString())
-    this.ref = location
-  } else if (typeof location === 'string') {
-    AbstractLevelDOWN.call(this, location)
-    this.ref = firebaseApp.database().ref(location)
-  } else {
-    throw new Error('location must be a string or a firebase.database.Reference https://firebase.google.com/docs/reference/js/firebase.database.Reference')
-  }
+  assert(typeof location === 'string', 'must pass a string as a location')
+  assert(fb64.isValidLocation(location), 'location has invalid characters. Must be one `/-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz`')
+  AbstractLevelDOWN.call(this, location)
+  this.ref = firebaseApp.database().ref(location)
 }
 
 inherits(FirebaseDOWN, AbstractLevelDOWN)

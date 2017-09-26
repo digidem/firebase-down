@@ -39,16 +39,18 @@ var config = {
 }
 
 var firebaseApp = firebase.initializeApp(config)
-var db = levelup(new FirebaseDOWN(firebaseApp, 'namespace'))
+var firebaseDown = FirebaseDOWN(firebaseApp)
+
+var db = levelup('level', {db: firebaseDown})
 ```
 
 ## API
 
-### `var firebaseDown = new FirebaseDOWN(firebaseApp[, location])``
+### `var firebaseDown = FirebaseDOWN(firebaseApp)``
 
-Creates a new FirebaseDOWN instance stored in `firebaseApp` at `location`. `firebaseApp` should be an instance of [`firebase.app.App`](https://firebase.google.com/docs/reference/js/firebase.app.App). `location` should be a string path to a key in a firebase database, e.g. `/path/to/key` or an instance of [`firebase.database.Reference`](https://firebase.google.com/docs/reference/js/firebase.database.Reference) e.g. `firebaseApp.database().ref('/path/to/key')`.
+Returns a constructor function that can be passed to [`levelup`](https://github.com/level/levelup), implements the [`abstract-leveldown`](https://github.com/Level/abstract-leveldown) interface. `firebaseApp` should be an instance of [`firebase.app.App`](https://firebase.google.com/docs/reference/js/firebase.app.App).
 
-`firebaseDown` implements the [`abstract-leveldown`](https://github.com/Level/abstract-leveldown) interface and can be passed to a [`levelup`](https://github.com/level/levelup) constructor e.g. `var db = levelup(firebaseDown)`.
+Call levelup with `var db = levelup(location, {db: firebaseDown})` where `location` should be a string path to a key in a firebase database, e.g. `/path/to/key`. The leveldown database will be stored under this key.
 
 ## Contribute
 

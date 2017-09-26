@@ -21,9 +21,7 @@ if (!firebase.apps.length) {
   firebaseApp = firebase.app()
 }
 
-function leveldown (location) {
-  return new FirebaseDOWN(firebaseApp, location)
-}
+var leveldown = new FirebaseDOWN(firebaseApp)
 
 var testBuffer = Buffer.from('foo')
 
