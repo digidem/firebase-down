@@ -1,6 +1,6 @@
 {
   "name": "firebase-down",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "description": "LevelDOWN adapter for Firebase realtime database",
   "main": "index.js",
   "scripts": {
