@@ -15,13 +15,13 @@
   "dependencies": {
     "abstract-leveldown": "^2.7.0",
     "d64": "^1.0.0",
-    "firebase": "^4.4.0",
     "inherits": "^2.0.3",
     "ltgt": "^2.2.0",
     "object-assign": "^4.1.1"
   },
   "devDependencies": {
     "dotenv": "^4.0.0",
+    "firebase": "^4.4.0",
     "randombytes": "^2.0.5",
     "tap": "^10.7.2"
   },
